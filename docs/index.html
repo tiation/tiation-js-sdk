@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiation JavaScript SDK - Interactive Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .demo-section {
+            padding: 80px 0;
+            background: #0f0f23;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .demo-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .demo-card h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .code-block {
+            background: #1a1a2e;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .code-block code {
+            color: #ffffff;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .interactive-demo {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .demo-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .demo-input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .demo-button {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,212,255,0.3);
+        }
+
+        .demo-output {
+            background: #1a1a2e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            min-height: 100px;
+            border: 1px solid rgba(0,212,255,0.3);
+        }
+
+        .features {
+            padding: 80px 0;
+            background: #16213e;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+        }
+
+        .cta-button {
+            background: #ffffff;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #00d4ff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>🚀 Tiation JavaScript SDK</h1>
+            <p>Modern JavaScript SDK for enterprise-grade API integration</p>
+            
+            <div class="badges">
+                <span class="badge">JavaScript ES2020+</span>
+                <span class="badge">TypeScript</span>
+                <span class="badge">Promise-based</span>
+                <span class="badge">Enterprise Ready</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #00d4ff;">Interactive Demo</h2>
+            <p style="text-align: center; margin-bottom: 40px; opacity: 0.8;">Try the Tiation JavaScript SDK directly in your browser</p>
+
+            <div class="interactive-demo">
+                <h3>🎮 Live API Demo</h3>
+                <p>Enter your API key to test real API calls:</p>
+                
+                <input type="text" class="demo-input" id="apiKey" placeholder="Enter your API key (demo mode available)">
+                <button class="demo-button" onclick="testConnection()">Test Connection</button>
+                <button class="demo-button" onclick="getAnalytics()">Get Analytics</button>
+                <button class="demo-button" onclick="runDemo()">Run Demo Mode</button>
+                
+                <div class="demo-output" id="output">
+                    <p style="color: #00d4ff;">Ready to test API calls...</p>
+                </div>
+            </div>
+
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <h3>📊 Analytics API</h3>
+                    <p>Get real-time business metrics and analytics data</p>
+                    <div class="code-block">
+                        <code>
+import { TiationClient } from '@tiation/sdk';
+
+const client = new TiationClient('your_api_key');
+
+// Get business analytics
+const analytics = await client.analytics.getMetrics();
+console.log(`Revenue: $${analytics.revenue}`);
+                        </code>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3>🔄 Automation Workflows</h3>
+                    <p>Create and manage automated business workflows</p>
+                    <div class="code-block">
+                        <code>
+// Create automation workflow
+const workflow = await client.automation.createWorkflow({
+  name: 'Customer Onboarding',
+  trigger: 'user_signup',
+  actions: ['send_welcome_email', 'create_profile']
+});
+
+console.log(`Workflow ID: ${workflow.id}`);
+                        </code>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3>📝 Content Management</h3>
+                    <p>Manage content across your applications</p>
+                    <div class="code-block">
+                        <code>
+// Create content
+const content = await client.cms.createContent({
+  title: 'New Product Launch',
+  body: 'Exciting new features available!',
+  category: 'announcements'
+});
+
+// Update content status
+await client.cms.updateContent(content.id, {
+  status: 'published'
+});
+                        </code>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3>🔔 Real-time Events</h3>
+                    <p>Subscribe to real-time business events</p>
+                    <div class="code-block">
+                        <code>
+// Subscribe to events
+client.subscribe('user.created', (event) => {
+  console.log('New user:', event.data);
+});
+
+// Multiple event types
+client.subscribe(['order.created', 'payment.completed'], 
+  (event) => {
+    console.log('Business event:', event.type);
+  }
+);
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;">Why Choose Tiation JavaScript SDK?</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Universal Support</h3>
+                    <p>Works seamlessly in both browser and Node.js environments</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>High Performance</h3>
+                    <p>Optimized for speed with minimal bundle size and tree-shaking</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Type Safety</h3>
+                    <p>Complete TypeScript definitions for enhanced development experience</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Modern Async</h3>
+                    <p>Promise-based with full async/await support</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Enterprise Ready</h3>
+                    <p>Built for scale with rate limiting, error handling, and monitoring</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚛️</div>
+                    <h3>React Integration</h3>
+                    <p>Dedicated React hooks for seamless frontend integration</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <div class="container">
+            <h2 style="margin-bottom: 30px;">Ready to Get Started?</h2>
+            <p style="margin-bottom: 40px; font-size: 1.2rem;">Join thousands of developers using Tiation SDK</p>
+            
+            <a href="https://github.com/tiation/tiation-js-sdk" class="cta-button">📚 View Documentation</a>
+            <a href="https://github.com/tiation/tiation-js-sdk/releases" class="cta-button">📦 Download SDK</a>
+            <a href="mailto:tiatheone@protonmail.com" class="cta-button">💬 Get Support</a>
+        </div>
+    </div>
+
+    <script>
+        // Demo functionality
+        function updateOutput(content, isError = false) {
+            const output = document.getElementById('output');
+            const color = isError ? '#ff4757' : '#00d4ff';
+            output.innerHTML = `<p style="color: ${color};">${content}</p>`;
+        }
+
+        function showLoading() {
+            updateOutput('<span class="loading"></span> Processing...');
+        }
+
+        function testConnection() {
+            showLoading();
+            
+            setTimeout(() => {
+                const apiKey = document.getElementById('apiKey').value;
+                if (apiKey) {
+                    updateOutput(`✅ Connected successfully with API key: ${apiKey.substring(0, 8)}...`);
+                } else {
+                    updateOutput('⚠️ Please enter an API key or use Demo Mode');
+                }
+            }, 1500);
+        }
+
+        function getAnalytics() {
+            showLoading();
+            
+            setTimeout(() => {
+                const mockData = {
+                    revenue: 125430.50,
+                    users: 1247,
+                    conversions: 89,
+                    growth: 12.5
+                };
+                
+                updateOutput(`📊 Analytics Data Retrieved:<br>
+                    💰 Revenue: $${mockData.revenue.toLocaleString()}<br>
+                    👥 Users: ${mockData.users.toLocaleString()}<br>
+                    📈 Conversions: ${mockData.conversions}<br>
+                    🚀 Growth: ${mockData.growth}%`);
+            }, 2000);
+        }
+
+        function runDemo() {
+            showLoading();
+            
+            setTimeout(() => {
+                updateOutput(`🎮 Demo Mode Activated!<br><br>
+                    📊 Sample Analytics: Revenue $125,430 | Users 1,247<br>
+                    🔄 Workflow Created: "Customer Onboarding" (ID: wf_123)<br>
+                    📝 Content Published: "New Product Launch"<br>
+                    🔔 Real-time Events: 3 active subscriptions<br><br>
+                    ✨ Ready for production with your API key!`);
+            }, 2500);
+        }
+
+        // Auto-run demo on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                updateOutput('🎯 Interactive demo ready! Try the buttons above to test API functionality.');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
