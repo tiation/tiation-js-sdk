@@ -1,335 +1,293 @@
-# Tiation JavaScript SDK
+# Project Name
 
+<!-- Hero Image with Dark Neon Theme -->
 <div align="center">
-  <img src="https://via.placeholder.com/800x200/1a1a2e/16213e?text=Tiation+JavaScript+SDK" alt="Tiation JavaScript SDK Banner" />
-  
-  <h3>Official JavaScript SDK for Tiation APIs</h3>
-  
-  [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/tiation/tiation-js-sdk)
-  [![JavaScript](https://img.shields.io/badge/javascript-ES2020+-brightgreen.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-  [![TypeScript](https://img.shields.io/badge/typescript-4.8+-blue.svg)](https://www.typescriptlang.org)
-  [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-  [![Enterprise](https://img.shields.io/badge/enterprise-ready-purple.svg)](https://github.com/tiation)
+  <img src=".screenshots/hero-banner.png" alt="Project Hero Banner" width="100%">
 </div>
 
-## 🌟 Overview
+<div align="center">
+  
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-00D9FF?style=for-the-badge&logo=github&logoColor=white)](https://tiaastor.github.io/tiation-js-sdk)
+[![Documentation](https://img.shields.io/badge/Documentation-Complete-00FF88?style=for-the-badge&logo=gitbook&logoColor=white)](https://github.com/TiaAstor/tiation-js-sdk/wiki)
+[![License](https://img.shields.io/badge/License-MIT-FF0080?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
 
-The Tiation JavaScript SDK provides a comprehensive, enterprise-grade interface for interacting with all Tiation services. Built with modern JavaScript/TypeScript and designed for both browser and Node.js environments, it offers seamless integration with your web applications.
+</div>
+
+## 🚀 About
+
+**Brief, compelling description of what this project does and why it matters.**
+
+<div align="center">
+  <img src=".screenshots/demo-overview.png" alt="Project Overview" width="80%">
+</div>
+
+---
 
 ## ✨ Features
 
-- **🚀 Universal Support**: Works in browser and Node.js environments
-- **🔒 Enterprise Security**: Built-in authentication and rate limiting
-- **📊 Real-time Analytics**: Live metrics and business intelligence
-- **🔄 Promise-based**: Modern async/await support with full TypeScript types
-- **🛡️ Type Safety**: Complete TypeScript definitions included
-- **📚 Rich Documentation**: Comprehensive docs with examples
-- **⚡ Lightweight**: Minimal bundle size with tree-shaking support
+<!-- Feature showcase with screenshots -->
+<table>
+  <tr>
+    <td width="50%">
+      <h3>🎯 Key Feature 1</h3>
+      <img src=".screenshots/feature-1.png" alt="Feature 1 Screenshot" width="100%">
+      <p>Description of feature 1 with benefits</p>
+    </td>
+    <td width="50%">
+      <h3>⚡ Key Feature 2</h3>
+      <img src=".screenshots/feature-2.png" alt="Feature 2 Screenshot" width="100%">
+      <p>Description of feature 2 with benefits</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>🔥 Key Feature 3</h3>
+      <img src=".screenshots/feature-3.png" alt="Feature 3 Screenshot" width="100%">
+      <p>Description of feature 3 with benefits</p>
+    </td>
+    <td width="50%">
+      <h3>🌟 Key Feature 4</h3>
+      <img src=".screenshots/feature-4.png" alt="Feature 4 Screenshot" width="100%">
+      <p>Description of feature 4 with benefits</p>
+    </td>
+  </tr>
+</table>
 
-## 📦 Installation
+---
 
-```bash
-# npm
-npm install @tiation/sdk
+## 🎨 Live Demo
 
-# yarn
-yarn add @tiation/sdk
+<div align="center">
+  <a href="https://tiaastor.github.io/tiation-js-sdk" target="_blank">
+    <img src=".screenshots/demo-preview.png" alt="Live Demo Preview" width="80%">
+  </a>
+  <br>
+  <a href="https://tiaastor.github.io/tiation-js-sdk" target="_blank">
+    <img src="https://img.shields.io/badge/🔗%20View%20Live%20Demo-00D9FF?style=for-the-badge&logo=github&logoColor=white" alt="View Live Demo">
+  </a>
+</div>
 
-# pnpm
-pnpm add @tiation/sdk
-```
+---
+
+## 🏗️ Architecture
+
+<div align="center">
+  <img src=".screenshots/architecture-diagram.png" alt="Architecture Diagram" width="90%">
+</div>
+
+### System Components
+
+- **Component 1**: Description and purpose
+- **Component 2**: Description and purpose
+- **Component 3**: Description and purpose
+
+---
 
 ## 🚀 Quick Start
 
-### JavaScript (ES6+)
-```javascript
-import { TiationClient } from '@tiation/sdk';
-
-// Initialize client
-const client = new TiationClient('your_api_key');
-
-// Get business analytics
-const analytics = await client.analytics.getMetrics();
-console.log(`Total revenue: $${analytics.revenue}`);
-
-// Create automation workflow
-const workflow = await client.automation.createWorkflow({
-  name: 'Customer Onboarding',
-  trigger: 'user_signup',
-  actions: ['send_welcome_email', 'create_profile']
-});
-
-console.log(`Workflow created: ${workflow.id}`);
-```
-
-### TypeScript
-```typescript
-import { TiationClient, Analytics, Workflow } from '@tiation/sdk';
-
-// Initialize client with full type support
-const client = new TiationClient('your_api_key');
-
-// Get business analytics with type safety
-const analytics: Analytics = await client.analytics.getMetrics();
-console.log(`Total revenue: $${analytics.revenue}`);
-
-// Create automation workflow with typed parameters
-const workflow: Workflow = await client.automation.createWorkflow({
-  name: 'Customer Onboarding',
-  trigger: 'user_signup',
-  actions: ['send_welcome_email', 'create_profile']
-});
-```
-
-## 📚 Documentation
-
-### Authentication
-
-```javascript
-import { TiationClient } from '@tiation/sdk';
-
-// API Key authentication
-const client = new TiationClient('your_api_key');
-
-// OAuth2 authentication
-const client = new TiationClient({
-  clientId: 'your_client_id',
-  clientSecret: 'your_client_secret',
-  oauthToken: 'your_oauth_token'
-});
-```
-
-### Core Services
-
-#### Analytics & Metrics
-```javascript
-// Get business metrics
-const metrics = await client.analytics.getMetrics({
-  startDate: '2024-01-01',
-  endDate: '2024-12-31'
-});
-
-// Real-time dashboard data
-const dashboard = await client.analytics.getDashboard();
-
-// Subscribe to real-time updates
-client.analytics.subscribe('metrics', (data) => {
-  console.log('New metrics:', data);
-});
-```
-
-#### Automation Workflows
-```javascript
-// List workflows
-const workflows = await client.automation.listWorkflows();
-
-// Execute workflow
-const result = await client.automation.executeWorkflow({
-  workflowId: 'workflow_123',
-  parameters: { userId: 'user_456' }
-});
-
-// Monitor workflow status
-const status = await client.automation.getWorkflowStatus(result.id);
-```
-
-#### Content Management
-```javascript
-// Create content
-const content = await client.cms.createContent({
-  title: 'New Product Launch',
-  body: 'Exciting new features available now!',
-  category: 'announcements'
-});
-
-// Update content
-await client.cms.updateContent(content.id, {
-  status: 'published'
-});
-
-// Search content
-const results = await client.cms.searchContent({
-  query: 'product launch',
-  category: 'announcements'
-});
-```
-
-### Advanced Features
-
-#### Real-time Subscriptions
-```javascript
-// Subscribe to real-time events
-client.subscribe('user.created', (event) => {
-  console.log('New user:', event.data);
-});
-
-// Multiple subscriptions
-client.subscribe(['order.created', 'payment.completed'], (event) => {
-  console.log('Business event:', event.type, event.data);
-});
-
-// Unsubscribe
-client.unsubscribe('user.created');
-```
-
-#### Error Handling
-```javascript
-try {
-  const analytics = await client.analytics.getMetrics();
-} catch (error) {
-  if (error.type === 'RateLimitError') {
-    console.log(`Rate limit exceeded, retry after: ${error.retryAfter}s`);
-  } else if (error.type === 'ApiError') {
-    console.log(`API error: ${error.message} (code: ${error.code})`);
-  } else {
-    console.log(`SDK error: ${error.message}`);
-  }
-}
-```
-
-## 🔧 Configuration
-
-### Environment Variables
-```bash
-TIATION_API_KEY=your_api_key
-TIATION_BASE_URL=https://api.tiation.com
-TIATION_TIMEOUT=30000
-```
-
-### Configuration Object
-```javascript
-const client = new TiationClient({
-  apiKey: 'your_api_key',
-  baseUrl: 'https://api.tiation.com',
-  timeout: 30000,
-  maxRetries: 3,
-  retryDelay: 1000
-});
-```
-
-## 🌐 Browser Support
-
-### Modern Browsers
-```html
-<script type="module">
-  import { TiationClient } from 'https://cdn.jsdelivr.net/npm/@tiation/sdk/dist/tiation.esm.js';
-  
-  const client = new TiationClient('your_api_key');
-  // Use client...
-</script>
-```
-
-### Legacy Browser Support
-```html
-<script src="https://cdn.jsdelivr.net/npm/@tiation/sdk/dist/tiation.umd.js"></script>
-<script>
-  const client = new TiationSDK.TiationClient('your_api_key');
-  // Use client...
-</script>
-```
-
-## 🏢 Enterprise Features
-
-### Batch Operations
-```javascript
-// Batch create content
-const contents = [
-  { title: 'Article 1', body: 'Content 1' },
-  { title: 'Article 2', body: 'Content 2' }
-];
-
-const results = await client.cms.batchCreate(contents);
-
-// Batch analytics
-const metrics = await client.analytics.batchMetrics([
-  { metric: 'revenue', period: 'monthly' },
-  { metric: 'users', period: 'daily' }
-]);
-```
-
-### Webhook Integration
-```javascript
-// Express.js webhook handler
-app.post('/webhooks/tiation', (req, res) => {
-  const event = client.webhooks.parseEvent(req.body, req.headers);
-  
-  switch (event.type) {
-    case 'user.created':
-      console.log('New user:', event.data);
-      // Trigger welcome workflow
-      client.automation.executeWorkflow({
-        workflowId: 'welcome_workflow',
-        parameters: { userId: event.data.id }
-      });
-      break;
-  }
-  
-  res.json({ received: true });
-});
-```
-
-### React Integration
-```jsx
-import { useTiation } from '@tiation/sdk/react';
-
-function Dashboard() {
-  const { analytics, loading, error } = useTiation({
-    apiKey: 'your_api_key',
-    autoFetch: ['analytics.getMetrics']
-  });
-  
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  
-  return (
-    <div>
-      <h1>Revenue: ${analytics.revenue}</h1>
-      <p>Users: {analytics.users}</p>
-    </div>
-  );
-}
-```
-
-## 🧪 Testing
+### Prerequisites
 
 ```bash
-# Run tests
-npm test
-
-# Run with coverage
-npm run test:coverage
-
-# Run specific test
-npm test -- --testNamePattern="analytics"
+# List prerequisites here
+node --version  # >= 18.0.0
+npm --version   # >= 8.0.0
 ```
 
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-### Development Setup
+### Installation
 
 ```bash
-# Clone repository
-git clone https://github.com/tiation/tiation-js-sdk.git
+# Clone the repository
+git clone https://github.com/TiaAstor/tiation-js-sdk.git
 cd tiation-js-sdk
 
 # Install dependencies
 npm install
 
-# Build the project
+# Start development server
+npm run dev
+```
+
+### Development Workflow
+
+<div align="center">
+  <img src=".screenshots/development-workflow.png" alt="Development Workflow" width="70%">
+</div>
+
+---
+
+## 📱 Screenshots
+
+### Desktop Interface
+
+<div align="center">
+  <img src=".screenshots/desktop-interface.png" alt="Desktop Interface" width="100%">
+</div>
+
+### Mobile Interface
+
+<div align="center">
+  <img src=".screenshots/mobile-interface.png" alt="Mobile Interface" width="60%">
+</div>
+
+### Dark Theme
+
+<div align="center">
+  <img src=".screenshots/dark-theme.png" alt="Dark Theme Interface" width="100%">
+</div>
+
+---
+
+## 🛠️ Technology Stack
+
+<div align="center">
+  <img src=".screenshots/tech-stack.png" alt="Technology Stack" width="80%">
+</div>
+
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **Backend**: Node.js, Express
+- **Database**: PostgreSQL
+- **Deployment**: Docker, GitHub Actions
+
+---
+
+## 📊 Performance Metrics
+
+<div align="center">
+  <img src=".screenshots/performance-metrics.png" alt="Performance Metrics" width="90%">
+</div>
+
+---
+
+## 🔧 Configuration
+
+### Environment Variables
+
+```env
+# Copy to .env.local
+NODE_ENV=development
+DATABASE_URL=postgresql://username:password@localhost:5432/database
+API_KEY=your-api-key-here
+```
+
+### Configuration Screenshots
+
+<div align="center">
+  <img src=".screenshots/configuration-setup.png" alt="Configuration Setup" width="70%">
+</div>
+
+---
+
+## 📚 Documentation
+
+<div align="center">
+  <a href="https://github.com/TiaAstor/tiation-js-sdk/wiki" target="_blank">
+    <img src=".screenshots/documentation-preview.png" alt="Documentation Preview" width="80%">
+  </a>
+  <br>
+  <a href="https://github.com/TiaAstor/tiation-js-sdk/wiki" target="_blank">
+    <img src="https://img.shields.io/badge/📖%20Full%20Documentation-00FF88?style=for-the-badge&logo=gitbook&logoColor=white" alt="Full Documentation">
+  </a>
+</div>
+
+### Quick Links
+
+- [📘 User Guide](docs/user-guide.md)
+- [🔧 API Reference](docs/api-reference.md)
+- [🏗️ Architecture Guide](docs/architecture.md)
+- [🚀 Deployment Guide](docs/deployment.md)
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+<div align="center">
+  <img src=".screenshots/contribution-workflow.png" alt="Contribution Workflow" width="70%">
+</div>
+
+### Development Setup
+
+```bash
+# Fork the repository
+git clone https://github.com/your-username/tiation-js-sdk.git
+cd tiation-js-sdk
+
+# Create feature branch
+git checkout -b feature/amazing-feature
+
+# Make changes and commit
+git commit -m "Add amazing feature"
+
+# Push to branch
+git push origin feature/amazing-feature
+```
+
+---
+
+## 🧪 Testing
+
+<div align="center">
+  <img src=".screenshots/testing-dashboard.png" alt="Testing Dashboard" width="80%">
+</div>
+
+```bash
+# Run all tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run end-to-end tests
+npm run test:e2e
+```
+
+---
+
+## 🚀 Deployment
+
+<div align="center">
+  <img src=".screenshots/deployment-pipeline.png" alt="Deployment Pipeline" width="90%">
+</div>
+
+### Production Deployment
+
+```bash
+# Build for production
 npm run build
 
-# Run tests
-npm test
+# Deploy to GitHub Pages
+npm run deploy
 ```
+
+---
+
+## 📈 Roadmap
+
+<div align="center">
+  <img src=".screenshots/roadmap.png" alt="Project Roadmap" width="90%">
+</div>
+
+- [x] Core functionality
+- [x] Dark theme implementation
+- [ ] Mobile app version
+- [ ] Advanced analytics
+- [ ] Third-party integrations
+
+---
 
 ## 📞 Support
 
-- **Documentation**: [JavaScript SDK Docs](https://docs.tiation.com/js-sdk)
-- **API Reference**: [API Documentation](https://api.tiation.com/docs)
-- **Issues**: [GitHub Issues](https://github.com/tiation/tiation-js-sdk/issues)
-- **Enterprise Support**: [tiatheone@protonmail.com](mailto:tiatheone@protonmail.com)
+<div align="center">
+  <img src=".screenshots/support-channels.png" alt="Support Channels" width="70%">
+</div>
+
+- 📧 **Email**: [support@example.com](mailto:support@example.com)
+- 💬 **Discord**: [Join our community](https://discord.gg/example)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/TiaAstor/tiation-js-sdk/issues)
+- 📖 **Wiki**: [Documentation](https://github.com/TiaAstor/tiation-js-sdk/wiki)
+
+---
 
 ## 📄 License
 
@@ -337,7 +295,24 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+## 🌟 Acknowledgments
+
 <div align="center">
-  <p>Built with ❤️ by <a href="https://github.com/tiation">Tiation</a></p>
-  <p>Modern JavaScript SDK for web and Node.js applications</p>
+  <img src=".screenshots/acknowledgments.png" alt="Acknowledgments" width="60%">
+</div>
+
+- Thanks to all contributors
+- Special thanks to the open-source community
+- Inspired by modern development practices
+
+---
+
+<div align="center">
+  <img src=".screenshots/footer-banner.png" alt="Footer Banner" width="100%">
+  
+  **⭐ Star this repository if you find it helpful! ⭐**
+  
+  <a href="https://github.com/TiaAstor/tiation-js-sdk">
+    <img src="https://img.shields.io/github/stars/TiaAstor/tiation-js-sdk?style=social&label=Star&maxAge=2592000" alt="GitHub Stars">
+  </a>
 </div>
